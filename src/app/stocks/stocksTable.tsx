@@ -1,10 +1,20 @@
+"use client";
+
 import NextLink from "next/link";
 import {Stock} from "@/app/types";
+import {useEffect, useState} from "react";
 
-export async function StocksTable() {
+export function StocksTable() {
+    const [stocks, setStocks] = useState<Stock[]>([]);
 
-    const response = await fetch("http://localhost:8000/api/v1/stocks");
-    const stocks: Stock[] = await response.json();
+    useEffect(() => {
+        (async () => {
+            const response = await fetch("http://localhost:8000/api/v1/stocks");
+            const newData: Stock[] = await response.json();
+
+            setStocks(newData);
+        })();
+    }, []);
 
     return (
         <table className={"w-full text-sm text-left text-gray-500"}>

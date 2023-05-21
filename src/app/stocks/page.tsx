@@ -7,7 +7,6 @@ export default function StocksPage() {
             <Header label={"Stocks page"}/>
 
             <div className={"relative overflow-x-auto shadow-md sm:rounded-lg mt-4"}>
-                {/* @ts-ignore */}
                 <StocksTable/>
             </div>
         </div>
